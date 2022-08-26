@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
+
+/* CSS Variables */
+:root {
+  --primary-color: rgb(53, 34, 8);
+  --secondary-color: rgb(225, 187, 128);
+  --line-height: 1.7rem;
+  --transition: 0.4s ease-in;
+}
+
+/* Smooth scroll effect */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Roboto", sans-serf;
+    margin: 0;
+}
+  
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+  
+a:hover {
+    color: var(--secondary-color);
+} 
+  
+.evangelista {
+    color: var(--primary-color);
+}
+    
+.realestate {
+    color: var(--secondary-color);
+}
+  
+nav {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    box-shadow: 2px 3px 2px #f1f1f1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+  
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5rem;
+}
+  
+.nav-item {
+    margin-left: 2rem;
+    font-size: 19px;
+}
+
+.container-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.50)100%), url('background.jpeg') no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 35rem;
+    color: white;
+}
+
+.position{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10%;
+    width: 25rem;
+    height: 25rem;
+}
+
+.first{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    /* margin-top: 5rem; */
+}
+
+.second{
+    margin-top: 2rem;
+    
+}
+
+.third{
+    /* display:flex;
+    justify-content: space-between; */
+    margin-top: 2rem;
+    
+}
+
+.buy{
+    color: white;
+    
+}
+.rent{
+    color: white;
+    margin-left:4rem;
+    margin-right: 2rem;
+}
+
+
+.search{
+    margin-top: 0.5rem;
+}
+
+input[type=text] {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+#btn-search{
+    color:white;
+    font-weight: bold;
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+footer {
+    border-top: 1px solid #f1f1f1;
+    box-shadow: 0px -2px 3px #f1f1f1;
+    text-align: center;
+    padding: 2rem;
+    color: gray;
+}
+
+
+.scroll-up {
+    position: fixed;
+    right: 0.5%;
+    bottom: 3%;
+    cursor: pointer;
+}
+  
+.up-arrow {
+    width: 2rem;
+    height: 2rem;
+}
