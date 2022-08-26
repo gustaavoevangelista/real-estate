@@ -69,7 +69,7 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.50)100%), url('background.jpeg') no-repeat;
+    background: linear-gradient(rgba(0,0,0,.50), rgba(0,0,0,.50)100%), url('/img/background.jpeg') no-repeat;
     background-position: center;
     background-size: cover;
     height: 35rem;
@@ -135,6 +135,10 @@ input[type=text] {
     padding: 8px;
     cursor: pointer;
     border-radius: 4px;
+}
+
+#houses{
+    margin-top: 3rem;
 }
 
 
