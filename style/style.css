@@ -20,6 +20,7 @@ body {
   
 ul li {
     list-style-type: none;
+    
 }
 
 a {
@@ -90,7 +91,6 @@ ul {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 40px;
-    /* margin-top: 5rem; */
 }
 
 .second{
@@ -99,8 +99,7 @@ ul {
 }
 
 .third{
-    /* display:flex;
-    justify-content: space-between; */
+
     margin-top: 2rem;
     
 }

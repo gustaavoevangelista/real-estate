@@ -8,29 +8,22 @@ scrollUp.addEventListener("click", () => {
     });
 });
 
-//Search for houses for sale in API
+//Searching for rentals in API
 let search = document.getElementById('search').value
 
-let btn_search = addEventListener('click', function searchHouses() {
+let btn_search = addEventListener('click', function searchRentals() {
     const options = {
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': '4af856f0d1mshc1d8102f0086981p10e823jsnc6ac426683f6',
             'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
-        },
-        params: {
-            state_code: req.query.state_code,
-            city: req.query.city,
-            offset: "0",
-            limit: "20",
         }
     };
     
-    fetch('https://realty-in-us.p.rapidapi.com/properties/v2/list-for-sale', options)
+    fetch('https://realty-in-us.p.rapidapi.com/properties/v2/list-for-rent?city=New%20York%20City&state_code=NY&limit=200&offset=0&sort=relevance', options)
         .then(response => response.json())
         .then(response => console.log(response))
         .catch(err => console.error(err));
-}) 
-
+})
 
 
