@@ -10,11 +10,12 @@ scrollUp.addEventListener("click", () => {
 
 //Search for houses for sale in API
 let search = document.getElementById('search').value
+let stateCode = document.getElementById('stateCode').value
 
 let btn_search = addEventListener("click", function searchHouses(req,response) {
 
     let data = {
-        state_code: "FL",
+        state_code: stateCode,
         city: search,
         offset: 0,
         limit: 20
@@ -30,11 +31,13 @@ let btn_search = addEventListener("click", function searchHouses(req,response) {
             "Access-Control-Allow-Credentials" : true 
         },
         
-        /* params: {data} */
+        /* params: {data}  */
 
     };
     
-    fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale', options)
+    console.log(data.city)
+    //colocar hard coded state code and city
+    fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?', options)
         
         .then(response => response.json())
         .then(response => console.log(response))

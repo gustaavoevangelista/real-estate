@@ -117,9 +117,19 @@ ul {
 
 .search{
     margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-input[type=text] {
+#stateCode {
+    width: 65px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+#search {
     box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
