@@ -35,13 +35,12 @@ let btn_search = addEventListener("click", function searchHouses(req,response) {
 
     };
     
-    console.log(data.city)
     //colocar hard coded state code and city
-    fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?', options)
+    fetch('https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code='+stateCode+'&city='+search+' &offset=0&limit=20', options)
         
         .then(response => response.json())
         .then(response => console.log(response))
-        .catch(err => console.error(err));
+        .catch(err => console.error(err))
 }) 
 
 
