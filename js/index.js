@@ -11,7 +11,7 @@ scrollUp.addEventListener('click', () => {
 // Select search button
 let btn_search = document
   .getElementById('btn-search')
-  .addEventListener('click', searchHouses);
+  .addEventListener('click', housesToBuy);
 
 // let btn_search_rents = document.getElementById().addEventListener('click',searchHouses)
 
