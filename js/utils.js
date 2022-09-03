@@ -39,8 +39,39 @@ function housesToBuy(event) {
       options
     )
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => /* console.log(data) */{
+        const houses = data.results
+        houses.forEach(house =>{
+          document.getElementById("res_houses")
+            .insertAdjacentHTML('beforeend', `<div id=${house.property_id}
+                                                <div
+                                                  <img src=${house.photo}>
+                                                </div>
+                                                <div>
+                                                  <h3>${house.short_price}{house.prop_type}</h3>
+                                                  <span>
+                                                    ${house.beds} Beds ${house.baths_full} Bath
+                                                  </span>
+                                                  <span>
+                                                    ${house.address}
+                                                  </span>
+                                                  <a href=${house.rdc_web_url}>
+                                                    Details
+                                                  </a>
+                                                </div>
+                                              </div>`)
+        })
+      })
       .catch(err => console.error(err));
+
+    let res_houses = document.getElementById("res_houses")
+    res_houses.innerHTML = document.createElement("div", "id=housesbox")
+    /* let housesbox = document.getElementById("housesbox")
+    housesbox.innerHTML = "box house" */
+
+
+
+
   }
 
   // fetch 20 houses for a given state code and city
