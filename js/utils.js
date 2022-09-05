@@ -27,7 +27,7 @@ function housesToBuy(event) {
   
     console.log({ ...data });
   
-    fetch(
+    const teste = fetch(
       'https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=' +
         data.state_code +
         '&city=' +
@@ -39,13 +39,31 @@ function housesToBuy(event) {
       options
     )
       .then(response => response.json())
-      .then(data => /* console.log(data) */{
-        const houses = data.results
+      .then(data => {
+        //console.log(data.listings)
+        let temp = data.listings
+        temp.map(item => {
+          console.log(item)
+          /* let qualquer = {
+            house_id: item.property_id,
+            house_photo: item.photo,
+            house_short_price: item.short_price,
+            house_prop_type: item.prop_type,
+            house_beds: item.beds,
+            house_baths: item.baths_full,
+            house_address: item.address,
+            house_url:item.rdc_web_url
+
+          } */
+        })
+        return temp.qualquer
+      })
+        /* const houses = data.results
         houses.forEach(house =>{
           document.getElementById("res_houses")
             .insertAdjacentHTML('beforeend', `<div id=${house.property_id}
                                                 <div
-                                                  <img src=${house.photo}>
+                                                <img src=${house.photo}>
                                                 </div>
                                                 <div>
                                                   <h3>${house.short_price}{house.prop_type}</h3>
@@ -60,15 +78,15 @@ function housesToBuy(event) {
                                                   </a>
                                                 </div>
                                               </div>`)
-        })
-      })
+        }) 
+      })*/
       .catch(err => console.error(err));
 
-    let res_houses = document.getElementById("res_houses")
+    /*let res_houses = document.getElementById("res_houses")
     res_houses.innerHTML = document.createElement("div", "id=housesbox")
     /* let housesbox = document.getElementById("housesbox")
     housesbox.innerHTML = "box house" */
-
+    
 
 
 
