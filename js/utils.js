@@ -1,5 +1,7 @@
+let res_houses = document.getElementById("res_houses")
+
 // fetch 20 houses for a given state code and city
-function housesToBuy(event) {
+async function housesToBuy(event) {
     event.preventDefault();
   
     //Search for houses for sale in API
@@ -27,7 +29,7 @@ function housesToBuy(event) {
   
     console.log({ ...data });
   
-    const teste = fetch(
+    const teste = await fetch(
       'https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=' +
         data.state_code +
         '&city=' +
@@ -41,10 +43,9 @@ function housesToBuy(event) {
       .then(response => response.json())
       .then(data => {
         //console.log(data.listings)
-        let temp = data.listings
-        temp.map(item => {
-          console.log(item)
-          /* let qualquer = {
+        let dict = data.listings.map(item => {
+          //console.log(item)
+          return {
             house_id: item.property_id,
             house_photo: item.photo,
             house_short_price: item.short_price,
@@ -54,10 +55,36 @@ function housesToBuy(event) {
             house_address: item.address,
             house_url:item.rdc_web_url
 
-          } */
+          }
         })
-        return temp.qualquer
+        return dict
+        
       })
+      //console.log(teste)
+
+      for (let i = 0; i <= teste.length; i++)
+      {
+        const houses = document.createElement("ul")
+
+        for(let j in teste[i]){
+          if(j !== 'house_photo'){
+            const house_detail = document.createElement("li")
+            house_detail.innerHTML = teste[i][j]
+            houses.appendChild(house_detail)
+          }
+          else{
+            const house_detail = document.createElement("img")
+            house_detail.src = teste[i][j]
+            houses.appendChild(house_detail)
+          }
+
+        }
+        res_houses.appendChild(houses)
+      }
+
+
+
+
         /* const houses = data.results
         houses.forEach(house =>{
           document.getElementById("res_houses")
@@ -80,17 +107,21 @@ function housesToBuy(event) {
                                               </div>`)
         }) 
       })*/
-      .catch(err => console.error(err));
+      //.catch(err => console.error(err));
 
-    /*let res_houses = document.getElementById("res_houses")
-    res_houses.innerHTML = document.createElement("div", "id=housesbox")
+    /*
+    
     /* let housesbox = document.getElementById("housesbox")
     housesbox.innerHTML = "box house" */
     
 
-
-
   }
+
+
+
+
+
+
 
   // fetch 20 houses for a given state code and city
 function housesToRent(event) {
