@@ -150,6 +150,12 @@ ul {
     margin-top: 3rem;
 }
 
+#house_photo {
+    width: 15rem;
+    height: 15rem;
+    /* border-radius: 50%; */
+}
+
 
 footer {
     border-top: 1px solid #f1f1f1;

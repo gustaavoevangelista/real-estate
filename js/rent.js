@@ -13,7 +13,3 @@ let btn_search = document
   .getElementById('btn-search')
   .addEventListener('click', housesToRent);
 
-
-
-// usar map() , appendchild() , innerHTML
-

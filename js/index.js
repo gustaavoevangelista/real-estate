@@ -13,8 +13,5 @@ let btn_search = document
   .getElementById('btn-search')
   .addEventListener('click', housesToBuy);
 
-// let btn_search_rents = document.getElementById().addEventListener('click',searchHouses)
-
-// usar map() , appendchild() , innerHTML
 
 

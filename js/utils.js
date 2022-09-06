@@ -46,7 +46,7 @@ async function housesToBuy(event) {
         let dict = data.listings.map(item => {
           //console.log(item)
           return {
-            house_id: item.property_id,
+            //house_id: item.property_id,
             house_photo: item.photo,
             house_short_price: item.short_price,
             house_prop_type: item.prop_type,
@@ -60,7 +60,6 @@ async function housesToBuy(event) {
         return dict
         
       })
-      //console.log(teste)
 
       for (let i = 0; i <= teste.length; i++)
       {
@@ -74,57 +73,19 @@ async function housesToBuy(event) {
           }
           else{
             const house_detail = document.createElement("img")
+            house_detail.id = "house_photo"
             house_detail.src = teste[i][j]
             houses.appendChild(house_detail)
           }
-
         }
         res_houses.appendChild(houses)
       }
-
-
-
-
-        /* const houses = data.results
-        houses.forEach(house =>{
-          document.getElementById("res_houses")
-            .insertAdjacentHTML('beforeend', `<div id=${house.property_id}
-                                                <div
-                                                <img src=${house.photo}>
-                                                </div>
-                                                <div>
-                                                  <h3>${house.short_price}{house.prop_type}</h3>
-                                                  <span>
-                                                    ${house.beds} Beds ${house.baths_full} Bath
-                                                  </span>
-                                                  <span>
-                                                    ${house.address}
-                                                  </span>
-                                                  <a href=${house.rdc_web_url}>
-                                                    Details
-                                                  </a>
-                                                </div>
-                                              </div>`)
-        }) 
-      })*/
-      //.catch(err => console.error(err));
-
-    /*
-    
-    /* let housesbox = document.getElementById("housesbox")
-    housesbox.innerHTML = "box house" */
-    
-
   }
 
 
 
-
-
-
-
   // fetch 20 houses for a given state code and city
-function housesToRent(event) {
+async function housesToRent(event) {
   event.preventDefault();
 
   //Search for houses for sale in API
@@ -152,7 +113,7 @@ function housesToRent(event) {
 
   console.log({ ...data });
 
-  fetch(
+  const teste = await fetch(
     'https://realty-in-us.p.rapidapi.com/properties/list-for-rent?state_code=' +
       data.state_code +
       '&city=' +
@@ -164,6 +125,45 @@ function housesToRent(event) {
     options
   )
     .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(err => console.error(err));
+    .then(data => {
+      //console.log(data.listings)
+      let dict = data.listings.map(item => {
+        //console.log(item)
+        return {
+          //house_id: item.property_id,
+          house_photo: item.photo,
+          house_short_price: item.short_price,
+          house_prop_type: item.prop_type,
+          house_beds: item.beds,
+          house_baths: item.baths_full,
+          house_address: item.address,
+          house_url:item.rdc_web_url
+
+        }
+      })
+      return dict
+      
+    })
+    //console.log(teste)
+    for (let i = 0; i <= teste.length; i++)
+    {
+      const houses = document.createElement("ul")
+
+      for(let j in teste[i]){
+        if(j !== 'house_photo'){
+          const house_detail = document.createElement("li")
+          house_detail.innerHTML = teste[i][j]
+          houses.appendChild(house_detail)
+        }
+        else{
+          const house_detail = document.createElement("img")
+          house_detail.id = "house_photo"
+          house_detail.src = teste[i][j]
+          houses.appendChild(house_detail)
+        }
+
+      }
+      res_houses.appendChild(houses)
+    }
+    //.catch(err => console.error(err));
 }
