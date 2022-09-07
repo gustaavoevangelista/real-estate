@@ -54,7 +54,7 @@ nav {
 }
 
   
-ul {
+nav ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -154,6 +154,12 @@ ul {
     width: 15rem;
     height: 15rem;
     /* border-radius: 50%; */
+}
+
+.card{
+    display:flex;
+    margin-left:3rem;
+    margin-bottom: 3rem;
 }
 
 

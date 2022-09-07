@@ -48,11 +48,11 @@ async function housesToBuy(event) {
           return {
             //house_id: item.property_id,
             house_photo: item.photo,
-            house_short_price: item.short_price,
-            house_prop_type: item.prop_type,
-            house_beds: item.beds,
-            house_baths: item.baths_full,
-            house_address: item.address,
+            Price: item.short_price,
+            Type: item.prop_type,
+            Beds: item.beds,
+            Baths: item.baths_full,
+            Address: item.address,
             house_url:item.rdc_web_url
 
           }
@@ -63,22 +63,39 @@ async function housesToBuy(event) {
 
       for (let i = 0; i <= teste.length; i++)
       {
+        const card = document.createElement("div")
+        card.className='card'
+        const left = document.createElement('div')
+
+        const right = document.createElement('div')
         const houses = document.createElement("ul")
 
         for(let j in teste[i]){
-          if(j !== 'house_photo'){
+          if(j !== 'house_photo' && j !== 'house_url'){
             const house_detail = document.createElement("li")
-            house_detail.innerHTML = teste[i][j]
+            house_detail.innerHTML = j + ': ' + teste[i][j]
             houses.appendChild(house_detail)
+          }
+          else if (j!== 'house_photo'){
+            const house_detail = document.createElement("li")
+            const link = document.createElement('a')
+            link.innerHTML = 'More Details'
+            link.href = teste[i][j]
+            house_detail.appendChild(link)
+            houses.appendChild(house_detail)
+
           }
           else{
             const house_detail = document.createElement("img")
             house_detail.id = "house_photo"
             house_detail.src = teste[i][j]
-            houses.appendChild(house_detail)
+            left.appendChild(house_detail)
           }
+          right.appendChild(houses)
+          card.appendChild(left)
+          card.appendChild(right)
         }
-        res_houses.appendChild(houses)
+        res_houses.appendChild(card)
       }
   }
 
