@@ -160,6 +160,13 @@ nav ul {
     display:flex;
     margin-left:3rem;
     margin-bottom: 3rem;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.right{
+    font-weight: bold;
+    font-size: 20px;
 }
 
 

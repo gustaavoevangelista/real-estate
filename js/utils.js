@@ -4,7 +4,7 @@ let res_houses = document.getElementById("res_houses")
 async function housesToBuy(event) {
     event.preventDefault();
   
-    //Search for houses for sale in API
+    
     let search = document.getElementById('search').value;
     let stateCode = document.getElementById('stateCode').value;
   
@@ -28,7 +28,7 @@ async function housesToBuy(event) {
     };
   
     console.log({ ...data });
-  
+  //Search for houses for sale in API
     const teste = await fetch(
       'https://realty-in-us.p.rapidapi.com/properties/list-for-sale?state_code=' +
         data.state_code +
@@ -42,9 +42,9 @@ async function housesToBuy(event) {
     )
       .then(response => response.json())
       .then(data => {
-        //console.log(data.listings)
+        //show house_details after fetch
         let dict = data.listings.map(item => {
-          //console.log(item)
+
           return {
             //house_id: item.property_id,
             house_photo: item.photo,
@@ -61,13 +61,14 @@ async function housesToBuy(event) {
         
       })
 
+      //create a card to display stylezed house_details
       for (let i = 0; i <= teste.length; i++)
       {
         const card = document.createElement("div")
         card.className='card'
         const left = document.createElement('div')
-
         const right = document.createElement('div')
+        right.className='right'
         const houses = document.createElement("ul")
 
         for(let j in teste[i]){
@@ -105,7 +106,7 @@ async function housesToBuy(event) {
 async function housesToRent(event) {
   event.preventDefault();
 
-  //Search for houses for sale in API
+  
   let search = document.getElementById('search').value;
   let stateCode = document.getElementById('stateCode').value;
 
@@ -130,6 +131,7 @@ async function housesToRent(event) {
 
   console.log({ ...data });
 
+//Search for houses to rent in API
   const teste = await fetch(
     'https://realty-in-us.p.rapidapi.com/properties/list-for-rent?state_code=' +
       data.state_code +
@@ -143,17 +145,16 @@ async function housesToRent(event) {
   )
     .then(response => response.json())
     .then(data => {
-      //console.log(data.listings)
+      //show house details after fetch
       let dict = data.listings.map(item => {
-        //console.log(item)
         return {
           //house_id: item.property_id,
           house_photo: item.photo,
-          house_short_price: item.short_price,
-          house_prop_type: item.prop_type,
-          house_beds: item.beds,
-          house_baths: item.baths_full,
-          house_address: item.address,
+          Price: item.short_price,
+          Type: item.prop_type,
+          Beds: item.beds,
+          Baths: item.baths_full,
+          Address: item.address,
           house_url:item.rdc_web_url
 
         }
@@ -161,26 +162,41 @@ async function housesToRent(event) {
       return dict
       
     })
-    //console.log(teste)
+    //create a card to display stylezed house details
     for (let i = 0; i <= teste.length; i++)
     {
+      const card = document.createElement("div")
+      card.className='card'
+      const left = document.createElement('div')
+      const right = document.createElement('div')
+      right.className='right'
       const houses = document.createElement("ul")
 
       for(let j in teste[i]){
-        if(j !== 'house_photo'){
+        if(j !== 'house_photo' && j !== 'house_url'){
           const house_detail = document.createElement("li")
-          house_detail.innerHTML = teste[i][j]
+          house_detail.innerHTML = j + ': ' + teste[i][j]
           houses.appendChild(house_detail)
+        }
+        else if (j!== 'house_photo'){
+          const house_detail = document.createElement("li")
+          const link = document.createElement('a')
+          link.innerHTML = 'More Details'
+          link.href = teste[i][j]
+          house_detail.appendChild(link)
+          houses.appendChild(house_detail)
+
         }
         else{
           const house_detail = document.createElement("img")
           house_detail.id = "house_photo"
           house_detail.src = teste[i][j]
-          houses.appendChild(house_detail)
+          left.appendChild(house_detail)
         }
-
+        right.appendChild(houses)
+        card.appendChild(left)
+        card.appendChild(right)
       }
-      res_houses.appendChild(houses)
+      res_houses.appendChild(card)
     }
-    //.catch(err => console.error(err));
 }
