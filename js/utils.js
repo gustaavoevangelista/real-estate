@@ -81,6 +81,7 @@ async function housesToBuy(event) {
             const house_detail = document.createElement("li")
             const link = document.createElement('a')
             link.innerHTML = 'More Details'
+            link.style.color= 'rgb(225, 187, 128)'
             link.href = teste[i][j]
             house_detail.appendChild(link)
             houses.appendChild(house_detail)
